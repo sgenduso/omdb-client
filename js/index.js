@@ -1,9 +1,13 @@
+var search = prompt("I want to see movies about...")
+
 var h1 = document.createElement('h1');
-h1.innerHTML = "OMDB Movies About Pizza";
+h1.className = 'upper';
+h1.innerHTML = 'OMDB Movies About' + " " + search;
 document.body.appendChild(h1);
 
+
 var xhr = new XMLHttpRequest();
-xhr.open('get', 'http://www.omdbapi.com/?s=pizza');
+xhr.open('get', 'http://www.omdbapi.com/?s=' + search);
 xhr.addEventListener('load', function () {
   var response = xhr.response;
   var responseData = JSON.parse(response);
