@@ -22,38 +22,37 @@ document.body.appendChild(divContent);
 button.addEventListener('click', function () {
   event.preventDefault();
 
-divContent.innerHTML="";
+  divContent.innerHTML="";
 
 
-var search = input.value;
+  var search = input.value;
 
-var h1 = document.createElement('h1');
-h1.className = 'upper';
-h1.innerHTML = 'OMDB Movies About' + " " + search;
-divContent.appendChild(h1);
+  var h1 = document.createElement('h1');
+  h1.className = 'upper';
+  h1.innerHTML = 'OMDB Movies About' + " " + search;
+  divContent.appendChild(h1);
 
-// var search = prompt("I want to see movies about...")
 
-var xhr = new XMLHttpRequest();
-xhr.open('get', 'http://www.omdbapi.com/?s=' + search);
-xhr.addEventListener('load', function () {
-  var response = xhr.response;
-  var responseData = JSON.parse(response);
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'http://www.omdbapi.com/?s=' + search);
+  xhr.addEventListener('load', function () {
+    var response = xhr.response;
+    var responseData = JSON.parse(response);
 
-for (var i = 0; i < responseData.Search.length; i++) {
-  var movie = responseData.Search[i]
-  var id = movie.imdbID
+    for (var i = 0; i < responseData.Search.length; i++) {
+      var movie = responseData.Search[i]
+      var id = movie.imdbID
 
-  var a = document.createElement('a');
-  a.innerHTML = movie.Title;
-  a.href = '/show.html?i=' + id;
+      var a = document.createElement('a');
+      a.innerHTML = movie.Title;
+      a.href = '/show.html?i=' + id;
 
-  var p = document.createElement('p');
-  p.appendChild(a);
-  divContent.appendChild(p);
-}
+      var p = document.createElement('p');
+      p.appendChild(a);
+      divContent.appendChild(p);
+    }
 
-});
-xhr.send();
+  });
+  xhr.send();
 
 })

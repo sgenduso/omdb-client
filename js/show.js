@@ -17,20 +17,11 @@ xhr.addEventListener('load', function () {
   var responseData = JSON.parse(response);
 
   for (var key in responseData) {
-  if (responseData.hasOwnProperty(key)) {
     var p = document.createElement('p');
     var filler = key + ": " + responseData[key];
     p.innerHTML = filler
     document.body.appendChild(p);
   }
-}
-
-// for (var i = 0; i < responseData.length; i++) {
-//   var p = document.createElement('p');
-//   var filler = responseData[i][0] + ": " + responseData[i][1];
-//   p.innerHTML = filler
-//   document.body.appendChild(p);
-// }
 
 });
 
